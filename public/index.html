@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marketplace</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <div class="status" id="status"></div>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="auth">
+          👤 Аутентифікація
+        </button>
+        <button class="tab-btn" data-tab="products">📦 Товари</button>
+        <button class="tab-btn" data-tab="orders">🛍️ Замовлення</button>
+      </div>
+
+      <div id="auth" class="tab-content active">
+        <section>
+          <h2>Реєстрація</h2>
+          <form id="register-form">
+            <label
+              >Username <input name="username" placeholder="user123" required
+            /></label>
+            <label
+              >Email <input name="email" placeholder="user@example.com"
+            /></label>
+            <label
+              >Ім'я <input name="fullName" placeholder="Іван Петренко"
+            /></label>
+            <label
+              >Пароль
+              <input
+                type="password"
+                name="password"
+                placeholder="••••••••"
+                required
+            /></label>
+            <button type="submit" class="success">✓ Зареєструватися</button>
+          </form>
+        </section>
+
+        <section>
+          <h2>Вхід</h2>
+          <form id="login-form">
+            <label
+              >Username <input name="username" placeholder="user123" required
+            /></label>
+            <label
+              >Пароль
+              <input
+                type="password"
+                name="password"
+                placeholder="••••••••"
+                required
+            /></label>
+            <button type="submit">→ Увійти</button>
+          </form>
+          <div class="info-box" style="margin-top: 16px">
+            <strong>Демо дані:</strong> Username: <code>demo</code>, Password:
+            <code>demo</code>
+          </div>
+        </section>
+
+        <section>
+          <h2>Поточний користувач</h2>
+          <div class="user-card">
+            <p>
+              <strong>Статус:</strong> <span id="whoami">не авторизований</span>
+            </p>
+            <button type="button" id="logout-btn" style="display: none">
+              ← Вийти з акаунту
+            </button>
+          </div>
+        </section>
+      </div>
+
+      <div id="products" class="tab-content">
+        <section>
+          <h2>Перегляд товарів</h2>
+          <div class="grid-buttons">
+            <button id="btn-load-all">📋 Всі товари</button>
+            <button id="btn-load-mine">⭐ Мої товари</button>
+            <div style="display: flex; gap: 8px; align-items: flex-end">
+              <label style="margin: 0; flex: 1">
+                Пошук за ID:
+                <input
+                  id="find-product-id"
+                  type="number"
+                  min="1"
+                  style="width: 100%; margin-top: 4px"
+                />
+              </label>
+              <button id="btn-find-by-id" style="margin: 0; padding: 10px 16px">
+                🔍
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Таблиця товарів</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Назва</th>
+                <th>Опис</th>
+                <th>Категорія</th>
+                <th>Ціна</th>
+                <th>На складі</th>
+                <th>Власник</th>
+              </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+          </table>
+        </section>
+
+        <section>
+          <h2>Мої товари</h2>
+          <form id="create-product-form">
+            <label
+              >Назва товару
+              <input name="title" placeholder="Ноутбук Pro 15" required
+            /></label>
+            <label
+              >Опис
+              <input name="description" placeholder="15.6-дюймовий дисплей..."
+            /></label>
+            <label
+              >Категорія <input name="category" placeholder="Електроніка"
+            /></label>
+            <label
+              >Ціна (грн)
+              <input
+                name="price"
+                type="number"
+                min="0"
+                step="100"
+                placeholder="25000"
+                required
+            /></label>
+            <label
+              >Кількість на складі
+              <input
+                name="quantity"
+                type="number"
+                min="0"
+                step="1"
+                placeholder="5"
+                required
+            /></label>
+            <label
+              >URL зображення
+              <input name="imageUrl" placeholder="http://example.com/image.jpg"
+            /></label>
+            <button type="submit" class="success">+ Додати товар</button>
+          </form>
+        </section>
+
+        <section>
+          <h2>Видалення товару</h2>
+          <form
+            id="delete-product-form"
+            style="grid-template-columns: 1fr auto"
+          >
+            <label
+              >ID товару
+              <input name="id" type="number" min="1" placeholder="1" required
+            /></label>
+            <button type="submit" class="danger">🗑️ Видалити</button>
+          </form>
+        </section>
+      </div>
+
+      <div id="orders" class="tab-content">
+        <section>
+          <h2>Мої замовлення</h2>
+          <button id="btn-my-orders" class="success">
+            📋 Показати мої замовлення
+          </button>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Товар</th>
+                <th>Статус</th>
+                <th>Кількість</th>
+                <th>Власник</th>
+              </tr>
+            </thead>
+            <tbody id="orders-table-body"></tbody>
+          </table>
+        </section>
+
+        <section>
+          <h2>Створити замовлення</h2>
+          <form style="grid-template-columns: 1fr auto">
+            <label
+              >Назва товару
+              <input
+                id="order-product-name"
+                type="text"
+                placeholder="Ноутбук"
+                required
+            /></label>
+            <button type="button" id="btn-create-order" class="success">
+              + Замовити
+            </button>
+          </form>
+        </section>
+
+        <section>
+          <h2>Знайти замовлення</h2>
+          <form style="grid-template-columns: 1fr auto">
+            <label
+              >ID замовлення
+              <input
+                id="find-order-id"
+                type="number"
+                min="1"
+                placeholder="1"
+                required
+            /></label>
+            <button type="button" id="btn-find-order">🔍 Знайти</button>
+          </form>
+        </section>
+
+        <section>
+          <h2>Оновити статус замовлення</h2>
+          <form style="grid-template-columns: repeat(3, 1fr)">
+            <label
+              >ID замовлення
+              <input id="status-order-id" type="number" min="1" placeholder="1"
+            /></label>
+            <label
+              >Новий статус
+              <input id="status-value" placeholder="shipped, delivered..."
+            /></label>
+            <button type="button" id="btn-update-status">⚙️ Змінити</button>
+          </form>
+        </section>
+
+        <section>
+          <h2>Скасування замовлення</h2>
+          <form style="grid-template-columns: 1fr auto">
+            <label
+              >ID замовлення
+              <input
+                id="cancel-order-id"
+                type="number"
+                min="1"
+                placeholder="1"
+                required
+            /></label>
+            <button type="button" id="btn-cancel-order" class="danger">
+              ✕ Скасувати
+            </button>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

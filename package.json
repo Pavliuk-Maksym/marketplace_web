@@ -1,0 +1,12 @@
+{
+  "name": "lab5-api-gateway",
+  "version": "1.0.0",
+  "description": "Lab 5: simple web app with API Gateway and CRUD demo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

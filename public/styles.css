@@ -1,0 +1,260 @@
+* { 
+  box-sizing: border-box; 
+}
+
+body { 
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  margin: 0; 
+  padding: 0; 
+  color: #333;
+  min-height: 100vh;
+}
+
+header { 
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff; 
+  padding: 32px 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+header h1 { 
+  margin: 0; 
+  font-size: 28px; 
+  font-weight: 700; 
+}
+
+header p { 
+  margin: 8px 0 0; 
+  opacity: 0.9; 
+  font-size: 14px; 
+}
+
+main { 
+  max-width: 1200px; 
+  margin: 30px auto; 
+  background: #fff; 
+  border-radius: 12px; 
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12); 
+  padding: 30px;
+}
+
+.tabs { 
+  display: flex; 
+  gap: 8px; 
+  border-bottom: 2px solid #eee; 
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.tab-btn { 
+  padding: 12px 20px; 
+  background: none; 
+  border: none; 
+  cursor: pointer; 
+  font-weight: 600; 
+  color: #999;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover { 
+  color: #667eea; 
+}
+
+.tab-btn.active { 
+  color: #667eea; 
+  border-bottom-color: #667eea; 
+}
+
+.tab-content { 
+  display: none; 
+}
+
+.tab-content.active { 
+  display: block; 
+}
+
+section { 
+  margin-bottom: 30px; 
+}
+
+section h2 { 
+  margin: 0 0 16px; 
+  font-size: 20px; 
+  color: #333; 
+  border-bottom: 2px solid #667eea;
+  padding-bottom: 8px;
+}
+
+form { 
+  display: grid; 
+  gap: 12px; 
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  padding: 16px;
+  background: #f9fafb;
+  border-radius: 8px;
+}
+
+label { 
+  display: flex; 
+  flex-direction: column; 
+  font-size: 13px; 
+  gap: 6px;
+  font-weight: 500;
+  color: #555;
+}
+
+input, select { 
+  padding: 10px 12px; 
+  font-size: 14px; 
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: inherit;
+  transition: border 0.2s ease;
+}
+
+input:focus, select:focus { 
+  outline: none; 
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+button { 
+  cursor: pointer; 
+  background: #667eea; 
+  color: #fff; 
+  border: none; 
+  border-radius: 6px;
+  padding: 11px 20px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+button:hover { 
+  background: #5568d3;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+button:active { 
+  transform: translateY(0); 
+}
+
+button.danger { 
+  background: #e74c3c; 
+}
+
+button.danger:hover { 
+  background: #c0392b; 
+}
+
+button.success { 
+  background: #27ae60; 
+}
+
+button.success:hover { 
+  background: #229954; 
+}
+
+table { 
+  width: 100%; 
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+th, td { 
+  border: 1px solid #e0e0e0;
+  padding: 12px;
+  text-align: left;
+}
+
+th { 
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  font-weight: 600;
+}
+
+tr:hover { 
+  background: #f9fafb; 
+}
+
+.status { 
+  padding: 14px 16px; 
+  border-radius: 6px; 
+  background: #eef6ff; 
+  color: #0a3d7c; 
+  display: none;
+  border-left: 4px solid #0a3d7c;
+  font-weight: 500;
+}
+
+.status.error { 
+  background: #ffe8e8; 
+  color: #c00;
+  border-left-color: #c00;
+}
+
+.row-actions { 
+  display: flex; 
+  gap: 8px; 
+}
+
+small { 
+  color: #999; 
+  font-size: 12px; 
+}
+
+code { 
+  background: #f4f4f4; 
+  padding: 3px 6px; 
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+}
+
+.grid-buttons { 
+  display: flex; 
+  gap: 8px; 
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.info-box { 
+  background: #f0f4ff; 
+  padding: 12px; 
+  border-radius: 6px; 
+  border-left: 4px solid #667eea;
+  color: #333;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.info-box strong { 
+  color: #667eea; 
+}
+
+pre { 
+  background: #f4f4f4; 
+  padding: 12px; 
+  border-radius: 6px; 
+  overflow: auto; 
+  max-height: 240px;
+  font-size: 12px;
+  border: 1px solid #e0e0e0;
+}
+
+.user-card { 
+  background: linear-gradient(135deg, #667eea15, #764ba215);
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #667eea40;
+  margin-bottom: 16px;
+}
+
+.user-card strong { 
+  color: #667eea; 
+}
