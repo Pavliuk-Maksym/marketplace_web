@@ -163,7 +163,6 @@ document
       category: form.category.value.trim(),
       price: Number(form.price.value),
       quantity: Number(form.quantity.value),
-      imageUrl: form.imageUrl.value.trim(),
       status: "active",
     };
 
